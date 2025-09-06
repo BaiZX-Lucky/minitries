@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>我的小游戏</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#111;color:#eee;text-align:center;padding:15%}
+    h1{font-size:2.5rem;margin-bottom:1rem}
+    a{display:inline-block;margin:1rem 0;padding:1rem 2rem;background:#007bff;color:#fff;text-decoration:none;border-radius:6px;transition:.3s}
+    a:hover{background:#0056b3}
+  </style>
+</head>
+<body>
+  <h1>🎮 我的小游戏</h1>
+  <a href=" ">🎯 反应挑战</a ><br/>
+  <a href="JonightSubway.html">🚇 文字冒险</a >
+</body>
+</html>
