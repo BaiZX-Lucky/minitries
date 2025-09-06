@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>点方块反应游戏</title>
+  <style>
+    body{margin:0;background:#111;color:#fff;font-family:Arial;text-align:center}
+    #board{position:relative;width:90vw;height:70vh;margin:0 auto;background:#000;border:2px solid #fff}
+    .box{position:absolute;width:60px;height:60px;border-radius:6px;cursor:pointer}
+    #score{font-size:28px;margin:10px}
+  </style>
+</head>
+<body>
+  <div id="score">得分：0</div>
+  <div id="board"></div>
+  <button onclick="start()">开始游戏</button>
+
+<script>
+let score=0,timeLeft=30,timer=null,spawnTimer=null;
+const board=document.getElementById('board');
+const colors=['#e74c3c','#3498db','#2ecc71','#f1c40f'];
+
+function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
+function makeBox(){
+    const b=document.createElement('div');
+    b.className='box';
+    b.style.backgroundColor=colors[rand(0,3)];
+    b.style.left=rand(0,board.clientWidth-60)+'px';
+    b.style.top =rand(0,board.clientHeight-60)+'px';
+    b.onclick=function(){score++;updateScore();b.remove();};
+    board.appendChild(b);
+    // 1.2 s 后自动消失，点不到扣分
+    setTimeout(()=>{if(board.contains(b)){score--;updateScore();b.remove();}},1200);
+}
+function updateScore(){document.getElementById('score').textContent='得分：'+score;}
+function start(){
+    score=0;timeLeft=30;updateScore();board.innerHTML='';
+    clearInterval(timer);clearInterval(spawnTimer);
+    timer=setInterval(()=>{
+        timeLeft--;
+        if(timeLeft<=0){clearInterval(timer);clearInterval(spawnTimer);alert('时间到！得分：'+score);}
+    },1000);
+    spawnTimer=setInterval(makeBox,700);
+}
+</script>
+</body>
+</html>
